@@ -7,11 +7,15 @@ export default async function handler(req, res) {
             return res.status(500).json('내용을 입력해주세요.');
         }
         try {
-            const db = (await connectDB).db('forum');
-            const result = await db.collection('post').updateOne(
+            const db = (await connectDB).db('1-day-1-commit');
+            const result = await db.collection('users').updateOne(
                 { _id: new ObjectId(req.body._id) },
                 {
-                    $set: { title: req.body.title, content: req.body.content },
+                    $set: {
+                        checkToday: req.body.checkToday,
+                        warnings: req.body.warnings,
+                        nonCommitList: req.body.nonCommitList,
+                    },
                 }
             );
             //return res.status(200).json("변경성공.");
