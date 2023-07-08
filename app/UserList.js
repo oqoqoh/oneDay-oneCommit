@@ -1,8 +1,10 @@
-'user client';
+'use client';
+
+//import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 export default function UserList({ result }) {
-    console.log('result ::', result);
-
+    const router = useRouter();
     return (
         <>
             {result.map((data, i) => {
@@ -31,6 +33,17 @@ export default function UserList({ result }) {
                     </div>
                 );
             })}
+            <button
+                onClick={() => {
+                    // router.push(`api/post/edit`);
+                    router.push({
+                        pathname: `api/post/edit`,
+                        query: result,
+                    });
+                }}
+            >
+                UPDATE
+            </button>
         </>
     );
 }

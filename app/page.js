@@ -1,6 +1,5 @@
 import { connectDB } from '@/util/database';
 import UserList from './UserList';
-import UpdateButton from './UpdateButton';
 
 export default async function Home() {
     let lastUpdKor = '';
@@ -75,7 +74,8 @@ export default async function Home() {
     return (
         <div>
             <UserList result={userList} />
-            <UpdateButton />
+
+            {/* <UpdateButton props={userList} /> */}
         </div>
     );
 }

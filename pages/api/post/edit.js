@@ -2,10 +2,12 @@ import { connectDB } from '@/util/database';
 import { ObjectId } from 'mongodb';
 
 export default async function handler(req, res) {
+    console.log('req.body ::', req.body);
+    console.log('req.query ::', req.query);
     const userList = req.body.data;
 
     if (req.method == 'POST') {
-        if (!req.body.title | !req.body.content) {
+        if (!req.body) {
             return res.status(500).json('내용을 입력해주세요.');
         }
         try {
@@ -18,12 +20,12 @@ export default async function handler(req, res) {
                         $set: {
                             checkToday: data.checkToday,
                             warnings: data.warnings,
-                            nonCommitList: data.nonCommitList,
+                            nonDateList: data.nonDateList,
                         },
                     }
                 );
 
-                res.redirect(302, '/list');
+                res.redirect(302, '/');
             });
 
             /*
