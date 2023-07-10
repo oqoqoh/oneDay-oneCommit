@@ -1,0 +1,15 @@
+h1,
+h2,
+body {
+    margin: 0;
+}
+.calendar-box {
+    width: 60%;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 0 lightgray;
+    margin: 20px 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
